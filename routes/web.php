@@ -11,6 +11,7 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\ProdutoController;
+use App\Http\Controllers\StatusPedidoController;
 use App\Http\Controllers\TransportadoraController;
 
 /*
@@ -77,6 +78,12 @@ Route::middleware('auth')->group(function () {
 
     // Rotas exclusivas do Super Administrador
     Route::middleware('nivel:Super Administrador')->group(function () {
+        // Status Pedido
+        Route::get('/status-pedido', [StatusPedidoController::class, 'index'])->name('status-pedido.index');
+        Route::post('/status-pedido', [StatusPedidoController::class, 'store'])->name('status-pedido.store');
+        Route::put('/status-pedido/{statusPedido}', [StatusPedidoController::class, 'update'])->name('status-pedido.update');
+        Route::patch('/status-pedido/{statusPedido}/toggle-status', [StatusPedidoController::class, 'toggleStatus'])->name('status-pedido.toggleStatus');
+
         // Coligadas
         Route::get('/coligadas', [ColigadaController::class, 'index'])->name('coligadas.index');
         Route::patch('/coligadas/{coligada}/toggle-status', [ColigadaController::class, 'toggleStatus'])->name('coligadas.toggleStatus');

@@ -56,6 +56,11 @@
 
         @if($nivelNome === 'super administrador')
         <li class="nav-item">
+            <a href="{{ route('status-pedido.index') }}" class="nav-link {{ request()->routeIs('status-pedido.*') ? 'active' : '' }}">
+                <i class="bi bi-clipboard-check"></i> Status de Pedido
+            </a>
+        </li>
+        <li class="nav-item">
             <a href="{{ route('coligadas.index') }}" class="nav-link {{ request()->routeIs('coligadas.*') ? 'active' : '' }}">
                 <i class="bi bi-building"></i> Coligadas
             </a>

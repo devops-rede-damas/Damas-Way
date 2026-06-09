@@ -13,6 +13,7 @@ class StatusPedido extends Model
 
     protected $fillable = [
         'nome_status',
+        'descricao',
         'status',
         'criado_por',
         'modificado_por',
